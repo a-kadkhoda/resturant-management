@@ -73,7 +73,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
         </div>
       )}
 
-      <Table className=" table-fixed w-full min-h-full ">
+      <Table className=" table-auto w-full min-h-full ">
         <TableHeader>
           <TableRow>
             {tableHeaderOrder.map((item, index) => {
