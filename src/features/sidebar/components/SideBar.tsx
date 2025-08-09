@@ -19,6 +19,7 @@ import React, { useEffect, useState } from "react";
 import { Item } from "../types/interfaces";
 import { ListItem } from "../types/enums";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const listItems: Item[] = [
   {
@@ -70,9 +71,11 @@ const listItems: Item[] = [
 
 const SideBar = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const path = usePathname();
+  const [curentPath] = path.split("/").filter((item) => item);
 
   const [selectedItem, setSelectedItem] = useState<ListItem>(
-    ListItem.Dashboard
+    curentPath as ListItem
   );
   const { setTheme, theme } = useTheme();
   useEffect(() => {
@@ -98,11 +101,13 @@ const SideBar = () => {
                 href={item.url}
                 key={index}
                 className={`flex px-4 py-3 w-full h-12 gap-3 hover:bg-primary-500 rounded-lg hover:text-white transition-colors duration-200 ${
-                  selectedItem == item.title
+                  selectedItem == item.title.toLowerCase()
                     ? "text-white bg-primary-500"
                     : "text-dark-500  dark:text-white"
                 } `}
-                onClick={() => setSelectedItem(item.title)}
+                onClick={() =>
+                  setSelectedItem(item.title.toLowerCase() as ListItem)
+                }
               >
                 <div>{item.icon}</div>
                 <span>{item.title}</span>
@@ -147,15 +152,17 @@ const SideBar = () => {
           </Button>
           <Button
             type="button"
-            className={`group w-1/2 rounded-lg h-12  text-base font-normal leading-6 tracking-[-0.32px] text-dark-500  hover:bg-primary-500 hover:text-white shadow-none  cursor-pointer transition-colors duration-200 ${
-              theme == "dark" ? "bg-primary-500 text-white" : "bg-transparent"
+            className={`group w-1/2 rounded-lg h-12  text-base font-normal leading-6 tracking-[-0.32px]  hover:bg-primary-500 hover:text-white shadow-none  cursor-pointer transition-colors duration-200 ${
+              theme == "dark"
+                ? "bg-primary-500 text-white"
+                : "text-dark-500  bg-transparent"
             }`}
             onClick={() => setTheme("dark")}
           >
             <Moon
               size={24}
               className={` text-dark-500 ${
-                theme === "dark" ? "text-white" : ""
+                theme === "dark" ? "text-white" : "text-dark-500"
               } group-hover:text-white transition-colors duration-200 `}
             />
             <span>Dark</span>

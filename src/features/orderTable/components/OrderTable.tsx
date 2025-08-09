@@ -1,17 +1,26 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
-import { Eye, Trash } from "lucide-react";
-import { tableBodyData, TableBodyData } from "../orderData";
+import { ChevronLeft, ChevronRight, Eye, Trash } from "lucide-react";
+import { TableBodyData } from "../orderData";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+} from "@/components/ui/pagination";
 
 enum ColorStatus {
   Completed = "#22C55E",
@@ -31,29 +40,41 @@ enum TableHeaderOrder {
 
 const tableHeaderOrder = Object.values(TableHeaderOrder);
 
-const OrderTable = () => {
-  const [tableData, setTableData] = useState<TableBodyData[]>(tableBodyData);
+interface OrederTableProps {
+  data: Array<TableBodyData>;
+  onDelete: (id: string) => void;
+  matchStatus?: (string | null)[];
+}
 
-  const handleDelete = (id: string) => {
-    const filterdItems = tableData.filter((item) => item.Order_ID !== id);
-
-    setTableData(filterdItems);
-  };
-
+const OrderTable: React.FC<OrederTableProps> = ({
+  data,
+  onDelete,
+  matchStatus = ["Completed", "Inprocess"],
+}) => {
+  const router = useRouter();
+  const path = usePathname();
+  const isDashboard =
+    path
+      .split("/")
+      .filter((item) => item)[0]
+      .toLowerCase() === "dashboard";
   return (
-    <div className=" size-full border rounded-lg pt-4   flex flex-col gap-4">
-      <div className="flex justify-between items-center w-full px-2 pr-6 ">
-        <span className="text-xl font-bold leading-[150%] tracking-[-0.4px]">
-          Order
-        </span>
-        <Toggle
-          variant="outline"
-          className="cursor-pointer text-sm font-normal leading-[140%] tracking-[-0.28px]"
-        >
-          See All
-        </Toggle>
-      </div>
-      <Table className=" table-auto w-full h-full ">
+    <div className=" size-full border rounded-lg pt-4 py-2  px-4  flex flex-col gap-1 justify-between">
+      {isDashboard && (
+        <div className="flex justify-between items-center w-full px-2 pr-6 ">
+          <span className="text-xl font-bold leading-[150%] tracking-[-0.4px]">
+            Order
+          </span>
+          <Toggle
+            variant="outline"
+            className="cursor-pointer text-sm font-normal leading-[140%] tracking-[-0.28px]"
+          >
+            See All
+          </Toggle>
+        </div>
+      )}
+
+      <Table className=" table-auto w-full min-h-full ">
         <TableHeader>
           <TableRow>
             {tableHeaderOrder.map((item, index) => {
@@ -69,14 +90,14 @@ const OrderTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {tableData
-            .filter((item) => item.Status !== null)
-            .slice(0, 8)
+          {data
+            .filter((item) => matchStatus.includes(item.Status))
+            .slice(0, 10)
             .map((item, index) => {
               return (
                 <TableRow key={index}>
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
-                    {item.Order_ID}
+                    #{item.Order_ID}
                   </TableCell>
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
                     {item.Customer_Name}
@@ -90,32 +111,54 @@ const OrderTable = () => {
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
                     {item.Payment_Type}
                   </TableCell>
-                  <TableCell>
-                    <span
-                      style={{
-                        backgroundColor: item.Status
-                          ? ` ${ColorStatus[item.Status] + "50"}`
-                          : "transparent",
-                        color: item.Status
-                          ? ` ${ColorStatus[item.Status]}`
-                          : "#fff",
-                      }}
-                      className="w-max px-2 py-1.5 rounded-sm "
-                    >
-                      {item.Status}
-                    </span>
-                  </TableCell>
+                  {item.Status == null ? (
+                    <TableCell>
+                      <Button
+                        type="button"
+                        className="bg-error-500 cursor-pointer hover:bg-error-600  rounded-md py-2 px-3 text-white text-xs leading-[130%] tracking-[-0.24px] font-normal mr-3 "
+                      >
+                        Reject
+                      </Button>
+                      <Button
+                        type="button"
+                        className="bg-success-500 cursor-pointer hover:bg-success-600  rounded-md py-2 px-3 text-white text-xs leading-[130%] tracking-[-0.24px] font-normal "
+                      >
+                        Accetpt
+                      </Button>
+                    </TableCell>
+                  ) : (
+                    <TableCell>
+                      <span
+                        style={{
+                          backgroundColor: item.Status
+                            ? ` ${ColorStatus[item.Status] + "50"}`
+                            : "transparent",
+                          color: item.Status
+                            ? ` ${ColorStatus[item.Status]}`
+                            : "#fff",
+                        }}
+                        className="w-max px-2 py-1.5 rounded-sm "
+                      >
+                        {item.Status}
+                      </span>
+                    </TableCell>
+                  )}
+
                   <TableCell className="flex gap-2">
                     <Button
                       type="button"
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
+                      onClick={() => {
+                        console.log(item.Order_ID);
+                        router.push(`order/${item.Order_ID}`);
+                      }}
                     >
                       <Eye />
                     </Button>
                     <Button
                       type="button"
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
-                      onClick={() => handleDelete(item.Order_ID)}
+                      onClick={() => onDelete(item.Order_ID)}
                     >
                       <Trash />
                     </Button>
@@ -125,6 +168,41 @@ const OrderTable = () => {
             })}
         </TableBody>
       </Table>
+      {!isDashboard && (
+        <div className="flex items-center justify-between bg-transparent w-full h-[44px] px-2">
+          <div className="w-full">a</div>
+          <span className="w-full text-sm text-gray-500 font-normal leading-[140%] tracking-[-0.28px]">
+            Showing 1 to 10 out of 50 records
+          </span>
+          <Pagination className="w-full ">
+            <PaginationContent className="w-full flex justify-end">
+              <PaginationItem>
+                <ChevronLeft />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#" isActive>
+                  2
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">4</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <ChevronRight />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   );
 };

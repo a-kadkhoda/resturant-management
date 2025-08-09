@@ -11,7 +11,8 @@ export default function DasboardLayout({
       <SideBar />
       <div className={`size-full`}>
         <TopBar />
-        <main className="size-full p-6">{children}</main>
+
+        <main className="w-full h-full p-6">{children}</main>
       </div>
     </section>
   );
