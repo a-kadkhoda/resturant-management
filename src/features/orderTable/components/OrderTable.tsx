@@ -4,7 +4,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -59,7 +58,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
       .filter((item) => item)[0]
       .toLowerCase() === "dashboard";
   return (
-    <div className=" size-full border rounded-lg pt-4 py-2  px-4  flex flex-col gap-1 justify-between">
+    <div className=" min-h-full border rounded-lg pt-4 py-2  px-4  flex flex-col gap-1 justify-between">
       {isDashboard && (
         <div className="flex justify-between items-center w-full px-2 pr-6 ">
           <span className="text-xl font-bold leading-[150%] tracking-[-0.4px]">

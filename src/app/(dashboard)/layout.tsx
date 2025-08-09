@@ -12,7 +12,9 @@ export default function DasboardLayout({
       <div className={`size-full`}>
         <TopBar />
 
-        <main className="w-full h-full p-6">{children}</main>
+        <main className="w-full  min-h-[calc(100svh-85px)] p-6">
+          {children}
+        </main>
       </div>
     </section>
   );

@@ -10,13 +10,13 @@ const Order = () => {
   const [tableData, setTableData] = useState<TableBodyData[]>(tableBodyData);
 
   return (
-    <div className="size-full flex flex-col gap-6">
+    <div className="h-[calc(100vh-133px)] flex flex-1 flex-col gap-6">
       <div className="h-12">
         <OptionsBar />
       </div>
       <Tabs
         defaultValue="New Order"
-        className=" bg-transparent flex flex-col gap-6"
+        className="size-full bg-transparent flex flex-col gap-6"
       >
         <TabsList className="bg-transparent">
           <TabsTrigger

@@ -67,7 +67,7 @@ const Dashboard = () => {
       <div className="size-full">
         <OrderStatisticsEmployeeAttendence />
       </div>
-      <div className="w-full h-[542px] overflow-y-auto">
+      <div className="w-full h-full">
         <OrderTable
           data={tableData}
           onDelete={(id) => {
