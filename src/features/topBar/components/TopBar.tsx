@@ -31,7 +31,6 @@ const TopBar = () => {
           {toCamelCase(curentPage)}
         </span>
         {segments.length > 1 && <DynamicBreadcrumb />}
-        <DynamicBreadcrumb />
       </div>
       <div className=" flex gap-4 items-center text-dark-500 dark:text-white">
         <SearchIcon size={24} />
