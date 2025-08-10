@@ -30,6 +30,7 @@ const TopBar = () => {
         <span className="font-bold text-2xl leading-[132%] tracking-[-0.48px] text-dark-500 dark:text-white">
           {toCamelCase(curentPage)}
         </span>
+        {segments.length > 1 && <DynamicBreadcrumb />}
         <DynamicBreadcrumb />
       </div>
       <div className=" flex gap-4 items-center text-dark-500 dark:text-white">
