@@ -1,4 +1,4 @@
-export type Status = "Completed" | "Inprocess" | "Pending" | "Cancelled";
+export type Status = "Completed" | "Inprocess" | "Cancelled";
 
 export interface TableBodyData {
   Order_ID: string;
@@ -72,7 +72,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 10, 2025",
     Amount: "$64",
     Payment_Type: "Cash",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "62355398",
@@ -120,7 +120,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jun 30, 2024",
     Amount: "$88",
     Payment_Type: "PayPal",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "27089341",
@@ -136,7 +136,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Sep 07, 2024",
     Amount: "$77",
     Payment_Type: "Cash",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "50985460",
@@ -176,7 +176,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jul 21, 2024",
     Amount: "$336",
     Payment_Type: "Cash",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "13782459",
@@ -216,7 +216,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Oct 11, 2024",
     Amount: "$73",
     Payment_Type: "Cash",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "84570639",
@@ -304,7 +304,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jun 18, 2024",
     Amount: "$191",
     Payment_Type: "Credit Card",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "89721560",
@@ -320,7 +320,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 06, 2025",
     Amount: "$211",
     Payment_Type: "Bank Transfer",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "81273605",
@@ -376,7 +376,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Nov 19, 2024",
     Amount: "$367",
     Payment_Type: "Cash",
-    Status: "Pending",
+    Status: "Inprocess",
   },
   {
     Order_ID: "72093158",

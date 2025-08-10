@@ -149,7 +149,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         console.log(item.Order_ID);
-                        router.push(`order/${item.Order_ID}`);
+                        router.push(`order/order-view/${item.Order_ID}`);
                       }}
                     >
                       <Eye />

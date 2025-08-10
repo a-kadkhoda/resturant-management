@@ -10,9 +10,11 @@ export default function DasboardLayout({
     <section className="flex min-h-svh w-full">
       <SideBar />
       <div className={`size-full`}>
-        <TopBar />
+        <div className="h-[80px]">
+          <TopBar />
+        </div>
 
-        <main className="w-full  min-h-[calc(100svh-85px)] p-6">
+        <main className="w-full  min-h-[calc(100svh-80px)] p-6">
           {children}
         </main>
       </div>
