@@ -12,23 +12,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegments } from "next/navigation";
+import DynamicBreadcrumb from "./DynamicBreadcrumb";
+import { toCamelCase } from "../../../utils/stringUtils";
 
 const TopBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const path = usePathname();
-  const [curentPage] = path.split("/").slice(-1);
-  function toCamelCase(text: string) {
-    return text
-      .replace(/-/g, " ")
-      .replace(/\b\w/g, (char) => char.toUpperCase());
-  }
+  const segments = useSelectedLayoutSegments();
+  const [curentPage] =
+    segments.length > 1
+      ? segments.slice(0, segments.length - 1).slice(-1)
+      : segments;
+
   return (
     <div className="size-full p-6 flex justify-between border-b items-center ">
-      <div className="w-max">
+      <div className="w-max flex flex-col justify-start gap-1.5">
         <span className="font-bold text-2xl leading-[132%] tracking-[-0.48px] text-dark-500 dark:text-white">
           {toCamelCase(curentPage)}
         </span>
+        <DynamicBreadcrumb />
       </div>
       <div className=" flex gap-4 items-center text-dark-500 dark:text-white">
         <SearchIcon size={24} />

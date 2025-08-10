@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import OptionsBar from "@/features/optionsBar/components/OptionsBar";
+import OptionsBar from "@/features/optionsBar/components/OrderOptionsBar";
 import OrderTable from "@/features/orderTable/components/OrderTable";
 import { tableBodyData, TableBodyData } from "@/features/orderTable/orderData";
 import { useState } from "react";
