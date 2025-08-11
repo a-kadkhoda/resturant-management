@@ -50,7 +50,7 @@ const infoItems: Items[] = [
 const Dashboard = () => {
   const [tableData, setTableData] = useState<TableBodyData[]>(tableBodyData);
   return (
-    <div className="size-full flex flex-col gap-4">
+    <div className="min-h-screen w-full flex flex-col gap-4">
       <div className="flex gap-4">
         {infoItems.map((item, index) => {
           return (
@@ -67,7 +67,7 @@ const Dashboard = () => {
       <div className="size-full">
         <OrderStatisticsEmployeeAttendence />
       </div>
-      <div className="w-full h-full">
+      <div className="w-full h-[524px]">
         <OrderTable
           data={tableData}
           onDelete={(id) => {

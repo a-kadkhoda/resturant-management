@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -10,16 +10,11 @@ import {
 } from "@/components/ui/table";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Eye, Trash } from "lucide-react";
+import { Eye, Trash } from "lucide-react";
 import { TableBodyData } from "../orderData";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-} from "@/components/ui/pagination";
+import TablePagination from "./TablePagination";
+import usePagination from "../hooks/usePagination";
 
 enum ColorStatus {
   Completed = "#22C55E",
@@ -43,12 +38,14 @@ interface OrederTableProps {
   data: Array<TableBodyData>;
   onDelete: (id: string) => void;
   matchStatus?: (string | null)[];
+  count?: number;
 }
 
 const OrderTable: React.FC<OrederTableProps> = ({
   data,
   onDelete,
   matchStatus = ["Completed", "Inprocess"],
+  count = 8,
 }) => {
   const router = useRouter();
   const path = usePathname();
@@ -57,42 +54,59 @@ const OrderTable: React.FC<OrederTableProps> = ({
       .split("/")
       .filter((item) => item)[0]
       .toLowerCase() === "dashboard";
+
+  const filteredData = () => {
+    return data.filter((item) => matchStatus.includes(item.Status));
+  };
+
+  const {
+    currentData,
+    goToPage,
+    nextPage,
+    perPage,
+    prevPage,
+    totalPages,
+    setPerPage,
+    pageNumber,
+  } = usePagination<TableBodyData>(filteredData());
+  useEffect(() => {
+    setPerPage(count);
+  }, [count, setPerPage]);
+
   return (
     <div className=" min-h-full border rounded-lg pt-4 py-2  px-4  flex flex-col gap-1 justify-between">
-      {isDashboard && (
-        <div className="flex justify-between items-center w-full px-2 pr-6 ">
-          <span className="text-xl font-bold leading-[150%] tracking-[-0.4px]">
-            Order
-          </span>
-          <Toggle
-            variant="outline"
-            className="cursor-pointer text-sm font-normal leading-[140%] tracking-[-0.28px]"
-          >
-            See All
-          </Toggle>
-        </div>
-      )}
+      <div className="size-full flex flex-col">
+        {isDashboard && (
+          <div className="flex justify-between items-center w-full  px-2 pr-6 ">
+            <span className="text-xl font-bold leading-[150%] tracking-[-0.4px]">
+              Order
+            </span>
+            <Toggle
+              variant="outline"
+              className="cursor-pointer text-sm font-normal leading-[140%] tracking-[-0.28px]"
+            >
+              See All
+            </Toggle>
+          </div>
+        )}
 
-      <Table className=" table-auto w-full min-h-full ">
-        <TableHeader>
-          <TableRow>
-            {tableHeaderOrder.map((item, index) => {
-              return (
-                <TableHead
-                  key={index}
-                  className="text-base font-normal  leading-[150%] tracking-[-0.32px] text-gray-500"
-                >
-                  {item}
-                </TableHead>
-              );
-            })}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data
-            .filter((item) => matchStatus.includes(item.Status))
-            .slice(0, 10)
-            .map((item, index) => {
+        <Table className=" table-auto w-full h-full ">
+          <TableHeader>
+            <TableRow>
+              {tableHeaderOrder.map((item, index) => {
+                return (
+                  <TableHead
+                    key={index}
+                    className="text-base font-normal  leading-[150%] tracking-[-0.32px] text-gray-500"
+                  >
+                    {item}
+                  </TableHead>
+                );
+              })}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {currentData.slice(0, perPage).map((item, index) => {
               return (
                 <TableRow key={index}>
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
@@ -165,41 +179,18 @@ const OrderTable: React.FC<OrederTableProps> = ({
                 </TableRow>
               );
             })}
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
+      </div>
       {!isDashboard && (
-        <div className="flex items-center justify-between bg-transparent w-full h-[44px] px-2">
-          <div className="w-full">a</div>
-          <span className="w-full text-sm text-gray-500 font-normal leading-[140%] tracking-[-0.28px]">
-            Showing 1 to 10 out of 50 records
-          </span>
-          <Pagination className="w-full ">
-            <PaginationContent className="w-full flex justify-end">
-              <PaginationItem>
-                <ChevronLeft />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">4</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <ChevronRight />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+        <div className="w-full size-[44px]">
+          <TablePagination
+            onNext={nextPage}
+            onPrev={prevPage}
+            totalPages={totalPages}
+            onToPage={goToPage}
+            pageNumber={pageNumber}
+          />
         </div>
       )}
     </div>

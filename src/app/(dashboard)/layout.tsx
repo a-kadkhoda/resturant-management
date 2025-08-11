@@ -7,14 +7,14 @@ export default function DasboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="flex min-h-svh w-full">
+    <section className="relative flex h-screen w-full overflow-hidden">
       <SideBar />
-      <div className={`size-full`}>
+      <div className={`h-screen w-full flex flex-col`}>
         <div className="h-[80px]">
           <TopBar />
         </div>
 
-        <main className="w-full  min-h-[calc(100svh-80px)] p-6">
+        <main className="w-full h-[calc(100svh-80px)] p-6 overflow-y-auto">
           {children}
         </main>
       </div>

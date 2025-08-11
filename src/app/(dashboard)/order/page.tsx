@@ -46,6 +46,7 @@ const Order = () => {
         </TabsList>
         <TabsContent value="New Order" className="size-full">
           <OrderTable
+            count={10}
             data={tableData}
             onDelete={(id) => {
               const filterdItems = tableData.filter(
@@ -59,6 +60,7 @@ const Order = () => {
         </TabsContent>
         <TabsContent value="In Process" className="size-full">
           <OrderTable
+            count={10}
             data={tableData}
             onDelete={(id) => {
               const filterdItems = tableData.filter(
@@ -72,6 +74,7 @@ const Order = () => {
         </TabsContent>
         <TabsContent value="Completed" className="size-full">
           <OrderTable
+            count={10}
             data={tableData}
             onDelete={(id) => {
               const filterdItems = tableData.filter(
@@ -85,6 +88,7 @@ const Order = () => {
         </TabsContent>
         <TabsContent value="Cancelled" className="size-full">
           <OrderTable
+            count={10}
             data={tableData}
             onDelete={(id) => {
               const filterdItems = tableData.filter(

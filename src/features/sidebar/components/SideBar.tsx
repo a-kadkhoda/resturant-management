@@ -20,6 +20,7 @@ import { Item } from "../types/interfaces";
 import { ListItem } from "../types/enums";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const listItems: Item[] = [
   {
@@ -83,16 +84,16 @@ const SideBar = () => {
   }, []);
   if (!isMounted) return null;
   return (
-    <div className="min-h-full min-w-[280px] p-6 border flex flex-col justify-between">
+    <div className="min-h-full w-[280px] p-6 border flex flex-col justify-between">
       <div className="flex flex-col gap-8">
-        <div className=" flex items-center gap-2">
-          <StarIcon
-            size={40}
-            className="fill-primary-400 dark:fill-primary-600"
+        <div className=" flex  items-center gap-2 size-full pointer-events-none select-none pl-4">
+          <Image
+            className="aspect-[2/1] w-3/5"
+            src={"/logo.png"}
+            height={1024}
+            width={1536}
+            alt="Logo"
           />
-          <span className="text-dark-500 dark:text-white font-extrabold text-4xl">
-            Logo
-          </span>
         </div>
         <div className="flex flex-col gap-1">
           {listItems.slice(0, 7).map((item, index) => {
@@ -162,7 +163,7 @@ const SideBar = () => {
             <Moon
               size={24}
               className={` text-dark-500 ${
-                theme === "dark" ? "text-white" : "text-dark-500"
+                theme === "dark" ? "bg-primary-500 text-white" : "text-dark-500"
               } group-hover:text-white transition-colors duration-200 `}
             />
             <span>Dark</span>

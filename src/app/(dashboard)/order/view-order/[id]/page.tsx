@@ -1,7 +1,11 @@
 import React from "react";
 
 const ViewOrder = () => {
-  return <div>ViewOrder</div>;
+    return <div><div>
+
+
+
+    </div></div>;
 };
 
 export default ViewOrder;
