@@ -85,7 +85,6 @@ const Order = () => {
         </TabsContent>
         <TabsContent value="Cancelled" className="size-full">
           <OrderTable
-            count={10}
             data={tableData}
             onDelete={(id) => {
               const filterdItems = tableData.filter(
