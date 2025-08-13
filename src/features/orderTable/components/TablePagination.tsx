@@ -14,6 +14,8 @@ interface PaginationProps {
   totalPages: number;
   onToPage: (value: number) => void;
   pageNumber: number;
+  perPage: number;
+  totalRecords: number;
 }
 
 const TablePagination: React.FC<PaginationProps> = ({
@@ -22,6 +24,8 @@ const TablePagination: React.FC<PaginationProps> = ({
   onToPage,
   totalPages,
   pageNumber,
+  perPage,
+  totalRecords,
 }) => {
   const maxPagesToShow = 4;
 
@@ -45,10 +49,9 @@ const TablePagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="flex items-center justify-between bg-transparent size-full px-2">
-      <div className="w-full">a</div>
       <span className="w-full text-sm text-gray-500 font-normal leading-[140%] tracking-[-0.28px]">
-        Showing {(pageNumber - 1) * 10 + 1} to{" "}
-        {Math.min(pageNumber * 10, totalPages * 10)} out of {totalPages * 10}{" "}
+        Showing {(pageNumber - 1) * perPage + 1} to{" "}
+        {Math.min(pageNumber * perPage, totalRecords)} out of {totalRecords}{" "}
         records
       </span>
       <Pagination className="w-full ">

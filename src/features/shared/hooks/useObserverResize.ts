@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useHeightResponsive = <T extends HTMLElement>() => {
+export const useObserverResize = <T extends HTMLElement>() => {
   const [height, setHeight] = useState(0);
   const ref = useRef<T>(null);
 

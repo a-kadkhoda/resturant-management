@@ -3,10 +3,10 @@
 import EmployeeAttendence from "@/features/employeeAttendence/components/EmployeeAttendence";
 import OrderStatistics from "@/features/orderStatistics/components/OrderStatistics";
 import React from "react";
-import { useHeightResponsive } from "../hooks/useHeightResponsive";
+import { useObserverResize } from "../hooks/useObserverResize";
 
 const OrderStatisticsEmployeeAttendence = () => {
-  const { ref, height } = useHeightResponsive<HTMLDivElement>();
+  const { ref, height } = useObserverResize<HTMLDivElement>();
 
   return (
     <div className="flex size-full gap-4">
