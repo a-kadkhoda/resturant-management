@@ -9,15 +9,13 @@ import {
   LayoutDashboard,
   Moon,
   Settings,
-  StarIcon,
   Sun,
   User,
   UsersRound,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Item } from "../types/interfaces";
-import { ListItem } from "../types/enums";
+import { Item, ListItem } from "../types/interfaces";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import Image from "next/image";

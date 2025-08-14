@@ -1,4 +1,9 @@
-export type Status = "Completed" | "Inprocess" | "Cancelled";
+export enum Status {
+  Completed = "Completed",
+  Inprocess = "Inprocess",
+  Cancelled = "Cancelled",
+  New_Order = "New Order",
+}
 
 export interface TableBodyData {
   Order_ID: string;
@@ -6,7 +11,7 @@ export interface TableBodyData {
   Date: string;
   Amount: string;
   Payment_Type: string;
-  Status: Status | null;
+  Status: Status;
 }
 
 export const tableBodyData: TableBodyData[] = [
@@ -16,7 +21,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 14, 2025",
     Amount: "$229",
     Payment_Type: "Bank Transfer",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "41243275",
@@ -24,7 +29,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jan 08, 2025",
     Amount: "$107",
     Payment_Type: "Bank Transfer",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "46095439",
@@ -32,7 +37,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Apr 05, 2025",
     Amount: "$329",
     Payment_Type: "Credit Card",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "16112056",
@@ -40,7 +45,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Nov 13, 2024",
     Amount: "$394",
     Payment_Type: "PayPal",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "26599570",
@@ -48,7 +53,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 25, 2025",
     Amount: "$116",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "46343794",
@@ -56,7 +61,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Aug 20, 2024",
     Amount: "$283",
     Payment_Type: "Cash",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "78561632",
@@ -64,7 +69,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Oct 04, 2024",
     Amount: "$350",
     Payment_Type: "PayPal",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "58374702",
@@ -72,7 +77,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 10, 2025",
     Amount: "$64",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "62355398",
@@ -80,7 +85,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jul 06, 2024",
     Amount: "$182",
     Payment_Type: "Cash",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "71319922",
@@ -88,7 +93,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Dec 21, 2024",
     Amount: "$237",
     Payment_Type: "PayPal",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "87364612",
@@ -96,7 +101,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jan 24, 2025",
     Amount: "$298",
     Payment_Type: "Bank Transfer",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "94781456",
@@ -104,7 +109,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 23, 2025",
     Amount: "$470",
     Payment_Type: "Bank Transfer",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "37419127",
@@ -112,7 +117,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Apr 08, 2025",
     Amount: "$197",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "32105172",
@@ -120,7 +125,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jun 30, 2024",
     Amount: "$88",
     Payment_Type: "PayPal",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "27089341",
@@ -128,7 +133,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 18, 2025",
     Amount: "$421",
     Payment_Type: "Credit Card",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "10347219",
@@ -136,7 +141,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Sep 07, 2024",
     Amount: "$77",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "50985460",
@@ -144,7 +149,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Nov 28, 2024",
     Amount: "$214",
     Payment_Type: "Bank Transfer",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "94063287",
@@ -152,7 +157,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Aug 15, 2024",
     Amount: "$303",
     Payment_Type: "Credit Card",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "75420986",
@@ -160,7 +165,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Dec 14, 2024",
     Amount: "$120",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "69873210",
@@ -168,7 +173,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Oct 29, 2024",
     Amount: "$267",
     Payment_Type: "Bank Transfer",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "41230577",
@@ -176,7 +181,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jul 21, 2024",
     Amount: "$336",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "13782459",
@@ -184,7 +189,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 09, 2025",
     Amount: "$284",
     Payment_Type: "Bank Transfer",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "32874291",
@@ -192,7 +197,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jan 13, 2025",
     Amount: "$80",
     Payment_Type: "PayPal",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "54821907",
@@ -200,7 +205,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Feb 27, 2025",
     Amount: "$158",
     Payment_Type: "Credit Card",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "86290314",
@@ -208,7 +213,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Apr 15, 2025",
     Amount: "$491",
     Payment_Type: "PayPal",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "29510348",
@@ -216,7 +221,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Oct 11, 2024",
     Amount: "$73",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "84570639",
@@ -224,7 +229,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jul 27, 2024",
     Amount: "$238",
     Payment_Type: "PayPal",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "18962045",
@@ -232,7 +237,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Feb 17, 2025",
     Amount: "$413",
     Payment_Type: "Bank Transfer",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "51763092",
@@ -240,7 +245,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 31, 2025",
     Amount: "$94",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "20391874",
@@ -248,7 +253,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Aug 04, 2024",
     Amount: "$153",
     Payment_Type: "Cash",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "95072138",
@@ -256,7 +261,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Nov 05, 2024",
     Amount: "$212",
     Payment_Type: "PayPal",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "74810329",
@@ -264,7 +269,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Dec 09, 2024",
     Amount: "$261",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "63109284",
@@ -272,7 +277,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Sep 23, 2024",
     Amount: "$479",
     Payment_Type: "Bank Transfer",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "28130746",
@@ -280,7 +285,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jan 20, 2025",
     Amount: "$345",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "54078132",
@@ -288,7 +293,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Apr 27, 2025",
     Amount: "$72",
     Payment_Type: "Cash",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "61023948",
@@ -296,7 +301,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 03, 2025",
     Amount: "$285",
     Payment_Type: "Bank Transfer",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "39812704",
@@ -304,7 +309,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jun 18, 2024",
     Amount: "$191",
     Payment_Type: "Credit Card",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "89721560",
@@ -312,7 +317,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Sep 30, 2024",
     Amount: "$463",
     Payment_Type: "Cash",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "53180497",
@@ -320,7 +325,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Mar 06, 2025",
     Amount: "$211",
     Payment_Type: "Bank Transfer",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "81273605",
@@ -328,7 +333,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jul 17, 2024",
     Amount: "$171",
     Payment_Type: "Credit Card",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "12587963",
@@ -336,7 +341,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Aug 27, 2024",
     Amount: "$442",
     Payment_Type: "Cash",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "96108253",
@@ -344,7 +349,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Oct 16, 2024",
     Amount: "$354",
     Payment_Type: "PayPal",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "38517092",
@@ -352,7 +357,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Feb 09, 2025",
     Amount: "$203",
     Payment_Type: "Cash",
-    Status: "Completed",
+    Status: Status.Completed,
   },
   {
     Order_ID: "54920817",
@@ -360,7 +365,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Jan 01, 2025",
     Amount: "$105",
     Payment_Type: "PayPal",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "73840192",
@@ -368,7 +373,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Apr 20, 2025",
     Amount: "$149",
     Payment_Type: "Credit Card",
-    Status: null,
+    Status: Status.New_Order,
   },
   {
     Order_ID: "89371205",
@@ -376,7 +381,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Nov 19, 2024",
     Amount: "$367",
     Payment_Type: "Cash",
-    Status: "Inprocess",
+    Status: Status.Inprocess,
   },
   {
     Order_ID: "72093158",
@@ -384,7 +389,7 @@ export const tableBodyData: TableBodyData[] = [
     Date: "Aug 10, 2024",
     Amount: "$495",
     Payment_Type: "Credit Card",
-    Status: "Cancelled",
+    Status: Status.Cancelled,
   },
   {
     Order_ID: "31278054",
@@ -392,6 +397,6 @@ export const tableBodyData: TableBodyData[] = [
     Date: "May 19, 2025",
     Amount: "$174",
     Payment_Type: "Bank Transfer",
-    Status: "Completed",
+    Status: Status.Completed,
   },
 ];

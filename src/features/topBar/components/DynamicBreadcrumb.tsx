@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { useSelectedLayoutSegments } from "next/navigation";
 import Link from "next/link";
-import { toCamelCase } from "@/utils/stringUtils";
+import { toCamelCase } from "@/features/shared/utils/stringUtils";
 
 const DynamicBreadcrumb = () => {
   const segments = useSelectedLayoutSegments();

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Filter, Plus, Search } from "lucide-react";
 import React from "react";
 
-const OptionsBar = () => {
+const OptionBar = () => {
   return (
     <div className="size-full flex justify-between">
       <div className="flex border items-center justify-between rounded-lg px-4 py-1 min-w-[320px]">
@@ -34,4 +34,4 @@ const OptionsBar = () => {
   );
 };
 
-export default OptionsBar;
+export default OptionBar;

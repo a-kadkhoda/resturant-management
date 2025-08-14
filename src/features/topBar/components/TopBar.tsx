@@ -14,7 +14,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useSelectedLayoutSegments } from "next/navigation";
 import DynamicBreadcrumb from "./DynamicBreadcrumb";
-import { toCamelCase } from "../../../utils/stringUtils";
+import { toCamelCase } from "../../shared/utils/stringUtils";
 
 const TopBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);

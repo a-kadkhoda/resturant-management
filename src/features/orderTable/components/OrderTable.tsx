@@ -11,17 +11,17 @@ import {
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
 import { Eye, Trash } from "lucide-react";
-import { TableBodyData } from "../orderData";
+import { Status, TableBodyData } from "../orderData";
 import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "./TablePagination";
 import usePagination from "../hooks/usePagination";
 import { useObserverResize } from "@/features/shared/hooks/useObserverResize";
 
-enum ColorStatus {
+export enum ColorStatus {
   Completed = "#22C55E",
   Inprocess = "#EAB308",
-  Pending = "#3B82F6",
   Cancelled = "#EF4444",
+  New_Order = "#3B82F6",
 }
 enum TableHeaderOrder {
   Order_ID = "Order ID",
@@ -148,12 +148,14 @@ const OrderTable: React.FC<OrederTableProps> = ({
                       <TableCell>
                         <span
                           style={{
-                            backgroundColor: item.Status
-                              ? ` ${ColorStatus[item.Status] + "50"}`
-                              : "transparent",
-                            color: item.Status
-                              ? ` ${ColorStatus[item.Status]}`
-                              : "#fff",
+                            backgroundColor:
+                              item.Status !== Status.New_Order
+                                ? ` ${ColorStatus[item.Status] + "50"}`
+                                : "transparent",
+                            color:
+                              item.Status !== Status.New_Order
+                                ? ` ${ColorStatus[item.Status]}`
+                                : "#fff",
                           }}
                           className="w-max px-2 py-1.5 rounded-sm "
                         >
