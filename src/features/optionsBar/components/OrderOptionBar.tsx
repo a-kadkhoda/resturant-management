@@ -12,12 +12,13 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { Status } from "@/features/orderTable/orderData";
 import { ColorStatus } from "@/features/orderTable/components/OrderTable";
+import { ParamValue } from "next/dist/server/request/params";
 
 const StatusItems = Object.values(Status);
 
 interface OrderOptionBar {
   status: Status;
-  id: string;
+  id: ParamValue;
 }
 
 const OrderOptionBar: React.FC<OrderOptionBar> = ({ id, status }) => {
