@@ -16,7 +16,8 @@ import { toCamelCase } from "@/features/shared/utils/stringUtils";
 const DynamicBreadcrumb = () => {
   const segments = useSelectedLayoutSegments();
 
-  const breadCrumbItems = segments.slice(0, segments.length - 1);
+  const breadCrumbItems =
+    segments.length <= 2 ? segments : segments.slice(0, segments.length - 1);
 
   return (
     <Breadcrumb>

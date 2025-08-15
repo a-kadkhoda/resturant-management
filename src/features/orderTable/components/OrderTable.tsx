@@ -129,7 +129,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
                     <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
                       {item.Payment_Type}
                     </TableCell>
-                    {item.Status == null ? (
+                    {item.Status == Status.New_Order ? (
                       <TableCell>
                         <Button
                           type="button"
@@ -148,14 +148,11 @@ const OrderTable: React.FC<OrederTableProps> = ({
                       <TableCell>
                         <span
                           style={{
-                            backgroundColor:
-                              item.Status !== Status.New_Order
-                                ? ` ${ColorStatus[item.Status] + "50"}`
-                                : "transparent",
-                            color:
-                              item.Status !== Status.New_Order
-                                ? ` ${ColorStatus[item.Status]}`
-                                : "#fff",
+                            backgroundColor: `${
+                              ColorStatus[item.Status] + "50"
+                            }`,
+
+                            color: `${ColorStatus[item.Status]}`,
                           }}
                           className="w-max px-2 py-1.5 rounded-sm "
                         >

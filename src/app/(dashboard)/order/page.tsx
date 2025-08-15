@@ -54,7 +54,7 @@ const Order = () => {
 
               setTableData(filterdItems);
             }}
-            matchStatus={[null]}
+            matchStatus={["New Order"]}
           />
         </TabsContent>
         <TabsContent value="In Process" className="size-full">

@@ -3,9 +3,23 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Filter, Plus, Search } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const OptionBar = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const path = pathname.split("/").pop() ?? "";
+
+  const routes: Record<string, string> = {
+    order: "/order/add-new-order",
+  };
+
+  const handleNavigationToAddPage = () => {
+    const target = routes[path];
+    if (target) router.push(target);
+  };
+
   return (
     <div className="size-full flex justify-between">
       <div className="flex border items-center justify-between rounded-lg px-4 py-1 min-w-[320px]">
@@ -26,6 +40,7 @@ const OptionBar = () => {
         <Button
           type="button"
           className="h-full bg-primary-500 hover:bg-primary-700 text-white cursor-pointer border text-base leading-[150%] tracking-[-0.32px] px-4 py-3"
+          onClick={handleNavigationToAddPage}
         >
           <Plus /> Add New Order
         </Button>
