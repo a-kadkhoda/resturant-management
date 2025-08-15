@@ -19,7 +19,6 @@ import { toCamelCase } from "../../shared/utils/stringUtils";
 const TopBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const segments = useSelectedLayoutSegments();
-  console.log("🚀 ~ TopBar ~ segments:", segments);
   const [curentPage] =
     segments.length > 1
       ? segments.slice(0, segments.length - 1).slice(-1)

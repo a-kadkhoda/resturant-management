@@ -1,6 +1,7 @@
 import CustomerDetails from "@/features/customerDetails/components/CustomerDetails";
 import OrderOptionBar from "@/features/optionsBar/components/OrderOptionBar";
 import OrderDetails from "@/features/orderDetails/components/OrderDetails";
+
 import React from "react";
 
 const AddNewOrder = () => {

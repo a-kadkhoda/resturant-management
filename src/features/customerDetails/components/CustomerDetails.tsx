@@ -1,6 +1,7 @@
 import React from "react";
 import { Label } from "@/components/ui/label";
 import { ParamValue } from "next/dist/server/request/params";
+import { Button } from "@/components/ui/button";
 
 interface CustomerDetailsProps {
   name?: string;
@@ -100,6 +101,11 @@ const CustomerDetails: React.FC<CustomerDetailsProps> = ({
             disabled={!!id}
           />
         </div>
+        {!!!id && (
+          <Button className="bg-success-600 hover:bg-success-700 text-white cursor-pointer">
+            Checkout
+          </Button>
+        )}
       </div>
     </div>
   );
