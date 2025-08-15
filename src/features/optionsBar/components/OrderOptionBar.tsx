@@ -15,7 +15,6 @@ import { ColorStatus } from "@/features/orderTable/components/OrderTable";
 import { ParamValue } from "next/dist/server/request/params";
 
 import { Check, ChevronsUpDown } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
   Command,
   CommandEmpty,

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { OrderDetailsItem } from "@/app/(dashboard)/order/view-order/[id]/page";
 import { Button } from "@/components/ui/button";
+import { ParamValue } from "next/dist/server/request/params";
 
 enum OrderDetailsHeader {
   OrderID = "Order ID",
@@ -21,9 +22,10 @@ const OrderDetailsItemsHeader = Object.values(OrderDetailsHeader);
 
 interface OrderDetailsProps {
   data?: Array<OrderDetailsItem>;
+  id?: ParamValue;
 }
 
-const OrderDetails: React.FC<OrderDetailsProps> = ({ data }) => {
+const OrderDetails: React.FC<OrderDetailsProps> = ({ data, id }) => {
   return (
     <div className="size-full border p-4 rounded-lg flex flex-col gap-4">
       <span className="px-2 text-xl font-bold leading-[150%] tracking-[-0.4px]">
@@ -107,9 +109,11 @@ const OrderDetails: React.FC<OrderDetailsProps> = ({ data }) => {
                 : "-"}
             </span>
           </div>
-          <Button className="bg-success-600 hover:bg-success-700 text-white cursor-pointer">
-            Checkout
-          </Button>
+          {!!!id && (
+            <Button className="bg-success-600 hover:bg-success-700 text-white cursor-pointer">
+              Checkout
+            </Button>
+          )}
         </div>
       </div>
     </div>
