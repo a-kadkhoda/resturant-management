@@ -5,7 +5,7 @@ export enum Status {
   New_Order = "New Order",
 }
 
-export interface TableBodyData {
+export interface OrderTableData {
   Order_ID: string;
   Customer_Name: string;
   Date: string;
@@ -14,7 +14,7 @@ export interface TableBodyData {
   Status: Status;
 }
 
-export const tableBodyData: TableBodyData[] = [
+export const tableBodyData: OrderTableData[] = [
   {
     Order_ID: "19668275",
     Customer_Name: "Nicole Shaffer",

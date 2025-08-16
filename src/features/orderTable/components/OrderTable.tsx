@@ -11,13 +11,13 @@ import {
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
 import { Eye, Trash } from "lucide-react";
-import { Status, TableBodyData } from "../orderData";
+import { Status, OrderTableData } from "../orderData";
 import { usePathname, useRouter } from "next/navigation";
-import TablePagination from "./TablePagination";
-import usePagination from "../hooks/usePagination";
+import TablePagination from "../../shared/components/TablePagination";
+import usePagination from "../../shared/hooks/usePagination";
 import { useObserverResize } from "@/features/shared/hooks/useObserverResize";
 
-export enum ColorStatus {
+export enum ColorOrderStatus {
   Completed = "#22C55E",
   Inprocess = "#EAB308",
   Cancelled = "#EF4444",
@@ -36,7 +36,7 @@ enum TableHeaderOrder {
 const tableHeaderOrder = Object.values(TableHeaderOrder);
 
 interface OrederTableProps {
-  data: Array<TableBodyData>;
+  data: Array<OrderTableData>;
   onDelete: (id: string) => void;
   matchStatus?: (string | null)[];
 }
@@ -68,7 +68,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
     totalPages,
     setPerPage,
     pageNumber,
-  } = usePagination<TableBodyData>(filteredData());
+  } = usePagination<OrderTableData>(filteredData());
   useEffect(() => {
     const tableCount = Math.floor((height - 39) / 52);
 
@@ -149,10 +149,10 @@ const OrderTable: React.FC<OrederTableProps> = ({
                         <span
                           style={{
                             backgroundColor: `${
-                              ColorStatus[item.Status] + "50"
+                              ColorOrderStatus[item.Status] + "50"
                             }`,
 
-                            color: `${ColorStatus[item.Status]}`,
+                            color: `${ColorOrderStatus[item.Status]}`,
                           }}
                           className="w-max px-2 py-1.5 rounded-sm "
                         >

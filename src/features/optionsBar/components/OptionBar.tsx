@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { toCamelCase } from "@/features/shared/utils/stringUtils";
 import { Filter, Plus, Search } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -13,6 +14,7 @@ const OptionBar = () => {
 
   const routes: Record<string, string> = {
     order: "/order/add-new-order",
+    employee: "/employee/add-new-employee",
   };
 
   const handleNavigationToAddPage = () => {
@@ -42,7 +44,7 @@ const OptionBar = () => {
           className="h-full bg-primary-500 hover:bg-primary-700 text-white cursor-pointer border text-base leading-[150%] tracking-[-0.32px] px-4 py-3"
           onClick={handleNavigationToAddPage}
         >
-          <Plus /> Add New Order
+          <Plus /> {toCamelCase(`Add New ${path}`)}
         </Button>
       </div>
     </div>
