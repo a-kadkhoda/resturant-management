@@ -118,7 +118,9 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       type="button"
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
-                        router.push(`order/view-employee/${item.EmployeeID}`);
+                        router.push(
+                          `employee/view-employee/${item.EmployeeID}`
+                        );
                       }}
                     >
                       <Eye />
@@ -128,7 +130,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         router.push(
-                          `order/add-new-employee/${item.EmployeeID}`
+                          `employee/view-employee/${item.EmployeeID}`
                         );
                       }}
                     >
