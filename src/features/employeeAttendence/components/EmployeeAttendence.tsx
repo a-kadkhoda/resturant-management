@@ -2,12 +2,17 @@
 import React from "react";
 import EmployeeAttendenceCard from "./EmployeeAttendenceCard";
 
-export type Status = "On_Time" | "Late" | "Left_Early" | "Overtime" | "Absent";
+export type AttendenceStatus =
+  | "On_Time"
+  | "Late"
+  | "Left_Early"
+  | "Overtime"
+  | "Absent";
 
 interface Item {
   image: string;
   name: string;
-  status: Status;
+  status: AttendenceStatus;
 }
 
 const ListItem: Item[] = [
