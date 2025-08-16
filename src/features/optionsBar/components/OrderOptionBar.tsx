@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Download, PlusIcon } from "lucide-react";
 import { Status } from "@/features/orderTable/orderData";
-import { ColorStatus } from "@/features/orderTable/components/OrderTable";
+import { ColorOrderStatus } from "@/features/orderTable/components/OrderTable";
 import { ParamValue } from "next/dist/server/request/params";
 
 import { Check, ChevronsUpDown } from "lucide-react";
@@ -134,11 +134,11 @@ const OrderOptionBar: React.FC<OrderOptionBar> = ({
                   <span
                     style={{
                       color:
-                        ColorStatus[
+                        ColorOrderStatus[
                           statusSelected.replace(
                             /\s+/g,
                             "_"
-                          ) as keyof typeof ColorStatus
+                          ) as keyof typeof ColorOrderStatus
                         ],
                     }}
                   >
