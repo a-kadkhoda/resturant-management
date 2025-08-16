@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { Status } from "./EmployeeAttendence";
+import { AttendenceStatus } from "./EmployeeAttendence";
 
 enum Color {
   On_Time = "#16a34a",
@@ -14,7 +14,7 @@ enum Color {
 interface EmployeeAttendenceCardProps {
   image: string;
   name: string;
-  status: Status;
+  status: AttendenceStatus;
 }
 
 const EmployeeAttendenceCard: React.FC<EmployeeAttendenceCardProps> = ({

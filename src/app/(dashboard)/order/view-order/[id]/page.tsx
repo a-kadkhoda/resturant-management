@@ -2,7 +2,7 @@
 import CustomerDetails from "@/features/customerDetails/components/CustomerDetails";
 import OrderOptionBar from "@/features/optionsBar/components/OrderOptionBar";
 import OrderDetails from "@/features/orderDetails/components/OrderDetails";
-import { Status } from "@/features/orderTable/orderData";
+import { orderStatus } from "@/features/orderTable/orderData";
 import { useParams } from "next/navigation";
 import React from "react";
 
@@ -55,7 +55,7 @@ const ViewOrder = () => {
   return (
     <div className="h-[calc(100vh-128px)] flex flex-1 flex-col gap-6">
       <div className="h-12">
-        <OrderOptionBar id={id} status={Status.Completed} />
+        <OrderOptionBar id={id} status={orderStatus.Completed} />
       </div>
       <div className="size-full flex gap-4">
         <div className="w-2/3 h-max">
