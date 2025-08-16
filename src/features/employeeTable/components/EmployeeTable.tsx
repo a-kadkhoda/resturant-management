@@ -52,9 +52,9 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
     pageNumber,
   } = usePagination<EmployeeTableData>(data);
   useEffect(() => {
-    const tableCount = Math.floor((height - 39) / 52);
+    const tableCount = Math.floor((height - 54) / 52);
 
-    if (tableCount > 0 && perPage !== tableCount) {
+    if (tableCount > 0) {
       setPerPage(tableCount);
     }
   }, [height, perPage, setPerPage]);
