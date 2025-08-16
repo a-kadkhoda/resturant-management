@@ -70,12 +70,14 @@ const OrderTable: React.FC<OrederTableProps> = ({
     pageNumber,
   } = usePagination<OrderTableData>(filteredData());
   useEffect(() => {
-    const tableCount = Math.floor((height - 54) / 52);
+    const tableCount = isDashboard
+      ? Math.floor((height - 39) / 52)
+      : Math.floor((height - 54) / 52);
 
     if (tableCount > 0) {
       setPerPage(tableCount);
     }
-  }, [height, perPage, setPerPage]);
+  }, [height, perPage, setPerPage, isDashboard]);
 
   return (
     <div className=" h-full border rounded-lg pt-4 py-2  px-4  flex flex-col gap-1 justify-between">
