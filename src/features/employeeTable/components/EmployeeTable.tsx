@@ -88,7 +88,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                     <Checkbox />
                   </TableCell>
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
-                    {item.EmployeeID}
+                    #{item.EmployeeID}
                   </TableCell>
                   <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
                     {item.EmployeeName}

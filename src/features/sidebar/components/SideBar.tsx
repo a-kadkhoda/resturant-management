@@ -87,7 +87,7 @@ const SideBar = () => {
         <div className=" flex  items-center gap-2 size-full pointer-events-none select-none pl-4">
           <Image
             className="aspect-[2/1] w-3/5"
-            src={"/logo.png"}
+            src={theme === "dark" ? "/logo.png" : "/logoDark.png"}
             height={1024}
             width={1536}
             alt="Logo"
