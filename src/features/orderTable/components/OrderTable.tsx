@@ -11,7 +11,7 @@ import {
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
 import { Eye, Trash } from "lucide-react";
-import { Status, OrderTableData } from "../orderData";
+import { orderStatus, OrderTableData } from "../orderData";
 import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "../../shared/components/TablePagination";
 import usePagination from "../../shared/hooks/usePagination";
@@ -129,7 +129,7 @@ const OrderTable: React.FC<OrederTableProps> = ({
                     <TableCell className="text-base font-normal leading-[150%] tracking-[-0.32px]">
                       {item.Payment_Type}
                     </TableCell>
-                    {item.Status == Status.New_Order ? (
+                    {item.Status == orderStatus.New_Order ? (
                       <TableCell>
                         <Button
                           type="button"

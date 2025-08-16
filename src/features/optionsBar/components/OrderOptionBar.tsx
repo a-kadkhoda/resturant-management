@@ -10,7 +10,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Download, PlusIcon } from "lucide-react";
-import { Status } from "@/features/orderTable/orderData";
+import { orderStatus } from "@/features/orderTable/orderData";
 import { ColorOrderStatus } from "@/features/orderTable/components/OrderTable";
 import { ParamValue } from "next/dist/server/request/params";
 
@@ -29,10 +29,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const StatusItems = Object.values(Status);
+const StatusItems = Object.values(orderStatus);
 
 interface OrderOptionBar {
-  status?: Status;
+  status?: orderStatus;
   id?: ParamValue;
 }
 

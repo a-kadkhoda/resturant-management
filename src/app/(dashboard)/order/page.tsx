@@ -3,11 +3,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import OptionsBar from "@/features/optionsBar/components/OptionBar";
 import OrderTable from "@/features/orderTable/components/OrderTable";
-import { tableBodyData, OrderTableData } from "@/features/orderTable/orderData";
+import {
+  orderTableData,
+  OrderTableData,
+} from "@/features/orderTable/orderData";
 import { useState } from "react";
 
 const Order = () => {
-  const [tableData, setTableData] = useState<OrderTableData[]>(tableBodyData);
+  const [tableData, setTableData] = useState<OrderTableData[]>(orderTableData);
 
   return (
     <div className="h-[calc(100vh-128px)] flex flex-1 flex-col gap-6">

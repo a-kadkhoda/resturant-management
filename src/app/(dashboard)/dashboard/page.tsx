@@ -1,7 +1,10 @@
 "use client";
 import InfoCard from "@/features/infoCard/components/InfoCard";
 import OrderTable from "@/features/orderTable/components/OrderTable";
-import { tableBodyData, TableBodyData } from "@/features/orderTable/orderData";
+import {
+  orderTableData,
+  OrderTableData,
+} from "@/features/orderTable/orderData";
 import OrderStatisticsEmployeeAttendence from "@/features/shared/components/OrderStatisticsEmployeeAttendence";
 import { BadgeDollarSign, CookingPot, File, Users } from "lucide-react";
 import React, { useState } from "react";
@@ -48,7 +51,7 @@ const infoItems: Items[] = [
 ];
 
 const Dashboard = () => {
-  const [tableData, setTableData] = useState<TableBodyData[]>(tableBodyData);
+  const [tableData, setTableData] = useState<OrderTableData[]>(orderTableData);
   return (
     <div className="min-h-screen w-full flex flex-col gap-4">
       <div className="flex gap-4">
