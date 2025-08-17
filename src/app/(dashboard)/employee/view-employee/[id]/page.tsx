@@ -1,9 +1,11 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import React from "react";
 
 const ViewEmployee = () => {
   const { id } = useParams();
+  const searchParams = useSearchParams();
+  const mode = searchParams.get("mode");
 
   return <div>{id}</div>;
 };

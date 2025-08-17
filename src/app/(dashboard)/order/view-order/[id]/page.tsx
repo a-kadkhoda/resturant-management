@@ -3,7 +3,7 @@ import CustomerDetails from "@/features/customerDetails/components/CustomerDetai
 import OrderOptionBar from "@/features/optionsBar/components/OrderOptionBar";
 import OrderDetails from "@/features/orderDetails/components/OrderDetails";
 import { orderStatus } from "@/features/orderTable/orderData";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import React from "react";
 
 export interface OrderDetailsItem {
@@ -22,7 +22,8 @@ export interface CustomerDetailsItem {
 
 const ViewOrder = () => {
   const { id } = useParams();
-
+  const searchParams = useSearchParams();
+  const mode = searchParams.get("mode");
   const OrderDetailsItems: Array<OrderDetailsItem> = [
     {
       Order_ID: "41243275",
@@ -59,10 +60,10 @@ const ViewOrder = () => {
       </div>
       <div className="size-full flex gap-4">
         <div className="w-2/3 h-max">
-          <OrderDetails data={OrderDetailsItems} />
+          <OrderDetails data={OrderDetailsItems} mode={mode} />
         </div>
         <div className="w-1/3 h-max ">
-          <CustomerDetails {...customerDetailsItem} id={id} />
+          <CustomerDetails {...customerDetailsItem} id={id} mode={mode} />
         </div>
       </div>
     </div>

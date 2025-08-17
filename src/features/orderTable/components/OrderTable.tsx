@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Toggle } from "@/components/ui/toggle";
 import { Button } from "@/components/ui/button";
-import { Eye, Trash } from "lucide-react";
+import { Edit, Eye, Trash } from "lucide-react";
 import { orderStatus, OrderTableData } from "../orderData";
 import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "../../shared/components/TablePagination";
@@ -58,6 +58,8 @@ const OrderTable: React.FC<OrederTableProps> = ({
     return data.filter((item) => matchStatus.includes(item.Status));
   };
   const { height, ref } = useObserverResize<HTMLDivElement>();
+  const edit = new URLSearchParams("mode=edit");
+  const view = new URLSearchParams("mode=view");
 
   const {
     currentData,
@@ -168,10 +170,23 @@ const OrderTable: React.FC<OrederTableProps> = ({
                         type="button"
                         className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                         onClick={() => {
-                          router.push(`order/view-order/${item.Order_ID}`);
+                          router.push(
+                            `order/view-order/${item.Order_ID}?${view}`
+                          );
                         }}
                       >
                         <Eye />
+                      </Button>
+                      <Button
+                        type="button"
+                        className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
+                        onClick={() => {
+                          router.push(
+                            `order/view-order/${item.Order_ID}?${edit}`
+                          );
+                        }}
+                      >
+                        <Edit />
                       </Button>
                       <Button
                         type="button"

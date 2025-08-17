@@ -39,6 +39,8 @@ interface EmployeeTableProps {
 
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
   const router = useRouter();
+  const edit = new URLSearchParams("mode=edit");
+  const view = new URLSearchParams("mode=view");
   const { height, ref } = useObserverResize<HTMLDivElement>();
 
   const {
@@ -119,7 +121,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         router.push(
-                          `employee/view-employee/${item.EmployeeID}`
+                          `employee/view-employee/${item.EmployeeID}?${edit}`
                         );
                       }}
                     >
@@ -130,7 +132,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         router.push(
-                          `employee/view-employee/${item.EmployeeID}`
+                          `employee/view-employee/${item.EmployeeID}?${view}`
                         );
                       }}
                     >
