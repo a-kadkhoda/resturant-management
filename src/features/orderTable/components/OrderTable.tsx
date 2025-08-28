@@ -16,6 +16,7 @@ import { usePathname, useRouter } from "next/navigation";
 import TablePagination from "../../shared/components/TablePagination";
 import usePagination from "../../shared/hooks/usePagination";
 import { useObserverResize } from "@/features/shared/hooks/useObserverResize";
+import { ViewStatus } from "@/features/shared/types/types";
 
 export enum ColorOrderStatus {
   Completed = "#22C55E",
@@ -58,8 +59,8 @@ const OrderTable: React.FC<OrederTableProps> = ({
     return data.filter((item) => matchStatus.includes(item.Status));
   };
   const { height, ref } = useObserverResize<HTMLDivElement>();
-  const edit = new URLSearchParams("mode=edit");
-  const view = new URLSearchParams("mode=view");
+  const edit = new URLSearchParams({ mode: "edit" satisfies ViewStatus });
+  const view = new URLSearchParams({ mode: "view" satisfies ViewStatus });
 
   const {
     currentData,

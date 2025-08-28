@@ -16,6 +16,7 @@ import { useObserverResize } from "@/features/shared/hooks/useObserverResize";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Edit, Eye, Trash } from "lucide-react";
+import { ViewStatus } from "@/features/shared/types/types";
 
 enum ColorEmployeeStatus {
   Active = "#22C55E",
@@ -39,8 +40,8 @@ interface EmployeeTableProps {
 
 const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
   const router = useRouter();
-  const edit = new URLSearchParams("mode=edit");
-  const view = new URLSearchParams("mode=view");
+  const edit = new URLSearchParams({ mode: "edit" satisfies ViewStatus });
+  const view = new URLSearchParams({ mode: "view" satisfies ViewStatus });
   const { height, ref } = useObserverResize<HTMLDivElement>();
 
   const {
@@ -121,7 +122,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         router.push(
-                          `employee/view-employee/${item.EmployeeID}?${edit}`
+                          `employee/view-employee/${item.EmployeeID}?${view}`
                         );
                       }}
                     >
@@ -132,7 +133,7 @@ const EmployeeTable: React.FC<EmployeeTableProps> = ({ data, onDelete }) => {
                       className="bg-transparent text-dark-500 dark:text-white hover:bg-transparent border cursor-pointer"
                       onClick={() => {
                         router.push(
-                          `employee/view-employee/${item.EmployeeID}?${view}`
+                          `employee/view-employee/${item.EmployeeID}?${edit}`
                         );
                       }}
                     >
